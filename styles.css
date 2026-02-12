@@ -13,12 +13,127 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.calculator-wrapper {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+}
+
 .calculator {
     background: #16213e;
     border-radius: 16px;
     padding: 24px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     width: 320px;
+    position: relative;
+}
+
+.btn-history {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    color: #8899aa;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: color 0.15s, background 0.15s;
+    z-index: 1;
+}
+
+.btn-history:hover {
+    color: #e0e0e0;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-history:active {
+    transform: none;
+}
+
+.history-panel {
+    background: #16213e;
+    border-radius: 16px;
+    padding: 20px;
+    width: 260px;
+    max-height: 460px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    margin-left: 12px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateX(-20px);
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+}
+
+.history-panel.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    color: #e0e0e0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.btn-clear-history {
+    background: #533483;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.btn-clear-history:hover {
+    background: #6a45a0;
+}
+
+.btn-clear-history:active {
+    transform: none;
+}
+
+.history-list {
+    overflow-y: auto;
+    flex: 1;
+}
+
+.history-entry {
+    background: #0f3460;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 8px;
+    text-align: right;
+}
+
+.history-entry .history-expr {
+    color: #8899aa;
+    font-size: 13px;
+    word-break: break-all;
+}
+
+.history-entry .history-result {
+    color: #e0e0e0;
+    font-size: 20px;
+    font-weight: 600;
+    word-break: break-all;
+}
+
+.history-empty {
+    color: #556677;
+    text-align: center;
+    padding: 40px 0;
+    font-size: 14px;
 }
 
 .display {

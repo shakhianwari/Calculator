@@ -1,8 +1,11 @@
 let expression = '';
 let justCalculated = false;
+let history = [];
 
 const expressionEl = document.getElementById('expression');
 const resultEl = document.getElementById('result');
+const historyPanel = document.getElementById('historyPanel');
+const historyList = document.getElementById('historyList');
 
 function updateDisplay() {
     const displayExpr = expression
@@ -73,13 +76,40 @@ function calculate() {
             return;
         }
         result = Math.round(result * 1e10) / 1e10;
+        const displayExpr = sanitized
+            .replace(/\*/g, '\u00d7')
+            .replace(/\//g, '\u00f7');
+        history.unshift({ expression: displayExpr, result });
         resultEl.textContent = result;
+        renderHistory();
         expression = String(result);
         justCalculated = true;
     } catch {
         resultEl.textContent = 'Error';
         expression = '';
     }
+}
+
+function toggleHistory() {
+    historyPanel.classList.toggle('active');
+}
+
+function renderHistory() {
+    if (history.length === 0) {
+        historyList.innerHTML = '<div class="history-empty">No calculations yet</div>';
+        return;
+    }
+    historyList.innerHTML = history.map(entry =>
+        `<div class="history-entry">
+            <div class="history-expr">${entry.expression}</div>
+            <div class="history-result">= ${entry.result}</div>
+        </div>`
+    ).join('');
+}
+
+function clearHistory() {
+    history = [];
+    renderHistory();
 }
 
 document.addEventListener('keydown', (e) => {

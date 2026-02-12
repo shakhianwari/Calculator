@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="calculator-wrapper">
     <div class="calculator">
+        <button class="btn-history" onclick="toggleHistory()" title="See calculation history">&#128339;</button>
         <div class="display">
             <div class="expression" id="expression"></div>
             <div class="result" id="result">0</div>
@@ -37,6 +39,17 @@
             <button class="btn-number" onclick="appendDot()">.</button>
             <button class="btn-equals" onclick="calculate()">=</button>
         </div>
+    </div>
+
+    <div class="history-panel" id="historyPanel">
+        <div class="history-header">
+            <span>History</span>
+            <button class="btn-clear-history" onclick="clearHistory()">Clear</button>
+        </div>
+        <div class="history-list" id="historyList">
+            <div class="history-empty">No calculations yet</div>
+        </div>
+    </div>
     </div>
 
     <script src="script.js"></script>
