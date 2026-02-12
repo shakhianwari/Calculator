@@ -2,6 +2,8 @@
 
 Welcome to my first project to build my portfolio aside from school projects.
 I will code a simple calculator with Html, css and javascript.
+The emoji's used were sourced from https://www.w3schools.com/charsets/
+
 ## Features
 - Addition
 - Subtraction
@@ -12,4 +14,3 @@ I will code a simple calculator with Html, css and javascript.
 - Delete
 - History of calculations
 
-The emoji's used were sourced from https://www.w3schools.com/charsets/
